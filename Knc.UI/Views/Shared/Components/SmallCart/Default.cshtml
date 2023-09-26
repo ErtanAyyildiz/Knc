@@ -1,0 +1,29 @@
+﻿@model SmallCartDTO
+
+@if (Model != null)
+{
+    <div class="col-2">
+        <div class="mini_cart_wrapper float-right">
+            <a href="/knc/sepet.html">
+                <span class="lnr lnr-cart"></span>Sepetim
+            </a>
+            <span wire:id="hxmEDccXvEuUuomIXJ1y" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;hxmEDccXvEuUuomIXJ1y&quot;,&quot;name&quot;:&quot;frontend.cart.count&quot;,&quot;locale&quot;:&quot;tr&quot;,&quot;path&quot;:&quot;hizmetler\/tasarim&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[&quot;cartUpdated&quot;]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;fefd948a&quot;,&quot;data&quot;:[],&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;52c7411d7417e7b998d7ed5f9bcf6f2fe434caa90143cc6dae7f4f7cc69f9f01&quot;}}" class="cart_quantity">@Model.NumberOfItems</span>
+
+            <!-- Livewire Component wire-end:hxmEDccXvEuUuomIXJ1y -->
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-2">
+        <div class="mini_cart_wrapper float-right">
+            <a href="/knc/sepet.html">
+                <span class="lnr lnr-cart"></span>Sepetim
+            </a>
+            <span wire:id="hxmEDccXvEuUuomIXJ1y" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;hxmEDccXvEuUuomIXJ1y&quot;,&quot;name&quot;:&quot;frontend.cart.count&quot;,&quot;locale&quot;:&quot;tr&quot;,&quot;path&quot;:&quot;hizmetler\/tasarim&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[&quot;cartUpdated&quot;]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;fefd948a&quot;,&quot;data&quot;:[],&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;52c7411d7417e7b998d7ed5f9bcf6f2fe434caa90143cc6dae7f4f7cc69f9f01&quot;}}" class="cart_quantity">0</span>
+
+            <!-- Livewire Component wire-end:hxmEDccXvEuUuomIXJ1y -->
+        </div>
+    </div>
+}
+

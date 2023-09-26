@@ -1,0 +1,161 @@
+﻿@model CartDTO
+@{
+    ViewData["Title"] = "Sepetim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs_area">
+    <div class="col-12">
+        <div class="breadcrumb_content">
+            <h1>Sepetim</h1>
+        </div>
+    </div>
+</div>
+
+
+
+<div wire:id="X446FLQ3MQR75feEmXHW" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;X446FLQ3MQR75feEmXHW&quot;,&quot;name&quot;:&quot;frontend.cart.items&quot;,&quot;locale&quot;:&quot;tr&quot;,&quot;path&quot;:&quot;sepet&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[&quot;cartUpdated&quot;]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;0f062585&quot;,&quot;data&quot;:{&quot;cart&quot;:[],&quot;name&quot;:null,&quot;surname&quot;:null,&quot;company_name&quot;:null,&quot;email&quot;:null,&quot;phone&quot;:null,&quot;address&quot;:null,&quot;note&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;a3fd89cbf68025594701270b03e30235b92814da5b9df0205f69fc6b11f43c86&quot;}}" class="page-tm">
+    <div class="shopping_cart_area">
+        <div class="container">
+
+            <div class="checkout_form">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <form wire:submit.prevent="submitForm()">
+                            <input type="hidden" name="_token" value="ftz5En5ongaFgrYVyytNNklKUsMe1vN9Zd2uqjCc">
+                            <h3>İletişim Bilgileri</h3>
+
+                            <div class="row">
+                                <div class="col-lg-6 mb-20">
+                                    <label>
+                                        Adınız
+                                        <span>*</span>
+                                    </label>
+                                    <input class="form-control" type="text" wire:model.defer="name" required>
+                                </div>
+
+                                <div class="col-lg-6 mb-20">
+                                    <label>
+                                        Soyadınız
+                                        <span>*</span>
+                                    </label>
+                                    <input class="form-control" type="text" wire:model.defer="surname" required>
+                                </div>
+
+                                <div class="col-12 mb-20">
+                                    <label>
+                                        E-Posta Adresi
+                                        <span>*</span>
+                                    </label>
+                                    <input class="form-control" type="email" wire:model.defer="email" required>
+                                </div>
+
+                                <div class="col-lg-6 mb-20">
+                                    <label>Firma Adı</label>
+                                    <input class="form-control" type="text" wire:model.defer="company_name">
+                                </div>
+
+                                <div class="col-lg-6 mb-20">
+                                    <label>Telefon <span>*</span></label>
+                                    <input type="text" class="form-control" wire:model.defer="phone" required>
+                                </div>
+
+                                <div class="col-lg-12 mb-20">
+                                    <label>Adres <span>*</span></label>
+                                    <textarea class="form-control" wire:model.defer="address" required></textarea>
+                                </div>
+
+                                <div class="col-12 mb-20">
+                                    <label>Notunuz</label>
+                                    <textarea class="form-control" wire:model.defer="note"></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="order_button">
+                                        <button wire:loading.attr="disabled" wire:loading.class="disabled-button" type="submit">
+                                            <span wire:loading.remove>Teklif Al</span>
+                                            <div wire:loading class="lds-ring">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <h3>Ürünleriniz</h3>
+
+                        @if (Model.CartItems.Count > 0)
+                        {
+                            <div class="table_desc" bis_skin_checked="1">
+                                <div class="cart_page table-responsive" bis_skin_checked="1">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="product_thumb">Ürün</th>
+                                                <th class="product_name">Ürün Adı</th>
+                                                <th class="product_quantity">Adet</th>
+                                                <th class="product_remove">Sil</th>
+                                            </tr>
+                                        </thead>
+
+                                        @foreach (var products in Model.CartItems)
+                                        {
+                                            <tbody>
+                                                <tr wire:id="wI6UOxq6TqAv8au4h5EZ">
+                                                    <td class="product_thumb">
+                                                        <img src="@products.ImageUrl" alt="@products.ProductTitle">
+                                                    </td>
+
+                                                    <td class="product_name">
+                                                        <span class="text-danger font-weight-bold">@products.ProductTitle</span> <br>
+                                                        @products.SubCategoryName
+                                                    </td>
+
+                                                    <td class="product_quantity">
+                                                        <label>
+                                                            @if (products.Quantity > 1)
+                                                            {
+                                                                <input type="number" wire:model="quantity" value="@products.Quantity">
+                                                            }
+                                                            else
+                                                            {
+                                                                <input type="number" wire:model="quantity" value="1">
+                                                            }
+                                                        </label>
+                                                    </td>
+
+                                                    <td class="product_remove">
+                                                        <a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@products.ProductId">
+                                                            <i class="fa fa-trash-o"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                        }
+
+                                    </table>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="error_form">
+                                <i class="ion-bag"></i>
+                                <h2>Sepetiniz Boş</h2>
+                                <p>Bergama Plastik fırsatlarından yararlanmak için ürünleri sepete ekleyin ve teklif alın.</p>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
